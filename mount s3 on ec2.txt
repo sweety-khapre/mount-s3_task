@@ -1,0 +1,32 @@
+step 1:create an instance > create .pem files> AMI > Amazon linux 2 ami(HVM)-kernel
+
+step2: login mobaxtern using public ip of instance and .pem file
+
+step3:	sudo yum update
+      	sudo su
+	yum update -y
+	sudo amazon-linux-extras install epel -y
+	sudo yum install s3fs-fuse -y
+	echo "Access_key":"Secret_access_key" > ${HOME}/.sweetypasswd
+	ls -la /root/
+	chmod 600 ${HOME}/.sweetypasswd
+	ls -la /root/
+	mkdir /mounting-dir
+	ls
+	s3fs sweety-bucket /mounting-dir -o passwd_file=${HOME}/.sweetypasswd
+	mount | grep mounting-dir
+	cd /mounting-dir
+
+step4:	create a file =>fileA
+	ls
+	fileA =>Present in cli
+
+step5: go to console > Bucket > object > refresh => fileA ==>Present in aws console also
+
+step6: Bucket > Addfiles > notefile.txt > upload  
+
+step 7: goto Mobaxtern
+	ls
+	notefile.txt ===> Present in cli also
+
+Hence Mounting is Successful
